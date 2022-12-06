@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <style>
+      label {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      form {
+        width: 60vw;
+        max-width: 500px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding-bottom: 2em;
+      }
+      body {
+        height: 100vh;
+        margin-top: 50px;
+      }
+      h3 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Please fill out this form with the required information</h3>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <label>Employee ID</label>
+      <input
+        type="text"
+        name="empId"
+        placeholder="Enter employee Id"
+        required
+      />
+
+      <label>Employee Name</label>
+      <input name="empName" placeholder="Enter employee Name" required />
+
+      <label>Department </label>
+
+      <select name="dept" required>
+        <option selected disabled>select department</option>
+        {% for dept in department%}
+        <option value="{{dept.name}}">{{dept.name}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <br>
+      <button type="submit">Create</button>
+      <button><a href='home'</a>Cancel</button>
+    </form>
+  </body>
+</html>

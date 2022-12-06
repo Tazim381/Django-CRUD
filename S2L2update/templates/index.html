@@ -1,0 +1,42 @@
+<html>
+  <body>
+    <h3>Employee List</h3>
+
+    <table border="1" solid>
+      <tr>
+        <th scope="col">Employee Id</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+
+      {% for employe in employee %}
+      <tr>
+        <td>{{employe.Emp_id}}</td>
+
+        <td>{{employe.Emp_name}}</td>
+        <td>{{employe.emp_dep}}</td>
+        <td>
+          <a
+            role="button"
+            class="btn btn-sm btn-outline-danger"
+            href="{% url 'update' id=employe.Emp_id  %}"
+            >Update</a
+          >
+        </td>
+        <td>
+          <a
+            role="button"
+            class="btn btn-sm btn-outline-danger"
+            href="{% url 'delete' id=employe.Emp_id  %}"
+            >Delete</a
+          >
+        </td>
+      </tr>
+      {%endfor%}
+    </table>
+
+    <button><a href="addnew">Add New</a></button>
+  </body>
+</html>
